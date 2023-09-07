@@ -1,0 +1,6 @@
+obj/*.o
+obj/*.lst
+hello-mega65.lst
+hello-debug.lst
+hello.elf
+hello.prg
