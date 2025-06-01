@@ -1,5 +1,10 @@
 VPATH = src
 
+XEMU=/Applications/Xemu/xmega65.app/Contents/MacOS/xmega65
+ETHERLOAD=~/Documents/MEGA65/etherload.osx
+ETHERLOAD_ARGS=-r hello.prg
+
+
 # Common source files
 ASM_SRCS =
 C_SRCS = main.c
@@ -29,3 +34,10 @@ hello.elf: $(OBJS_DEBUG)
 clean:
 	-rm $(OBJS) $(OBJS:%.o=%.lst) $(OBJS_DEBUG) $(OBJS_DEBUG:%.o=%.lst)
 	-rm hello.elf hello.prg hello-mega65.lst hello-debug.lst
+
+run: hello.prg
+	$(XEMU) -prg hello.prg -uartmon :4510 -videostd 1
+
+qq: hello.prg
+	$(ETHERLOAD) $(ETHERLOAD_ARGS)	
+
